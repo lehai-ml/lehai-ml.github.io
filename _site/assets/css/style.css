@@ -149,7 +149,7 @@ body { font-family: "Poppins", sans-serif; }
 .project.card:hover:not(.post) { transform: translateY(-8px); box-shadow: -2px 8px 40px -12px rgba(0, 0, 0, 0.24); }
 
 @media screen and (max-width: 991px) { .sidebar { width: 100%; position: relative; }
-  #container { display: inline-block; position: relative; width: 20%; }
+  #container { display: inline-block; position: relative; width: 35%; }
   .card-columns { margin-left: 0px; margin-top: 100px; } }
 .timeline-body { position: relative; border-radius: 0 15px 15px 0; padding: 5px 0; }
 .timeline-body:after { content: ""; width: 4px; height: 100%; background-color: #007bff; position: absolute; left: -4px; top: 0; }

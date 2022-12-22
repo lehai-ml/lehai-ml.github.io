@@ -7,7 +7,7 @@ description: My PhD project at King's College London
 
 # Examining neuroimaging markers related to psychiatric disorders in neonates using diffusion MRI and machine learning
 
-The Movies Project is something like **Netflix**, the only difference is that **it's not real**! It doesn't exist! I just created it to demonstrate how the **showcase** page looks like and how you can write whatever you want with full markdown support.
+Schizophrenia is a psychiatric disorder 
 
 ![preview](https://www.sketchappsources.com/resources/source-image/we-were-soldiers-landing-page-dbruggisser.jpg)
 
