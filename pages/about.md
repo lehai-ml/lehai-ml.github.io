@@ -16,6 +16,10 @@ I am a PhD student 🤓 based in London :uk:. I have extensive data analysis exp
 {% include about/skills.html title="Language Skills" source=site.data.languages %}
 </div>
 
+<p class="text-center">
+{% include elements/button.html link="https://github.com/lehai-ml" text="Get my full CV here" %}
+</p>
+
 <div class="row">
 {% include about/timeline.html %}
 </div>

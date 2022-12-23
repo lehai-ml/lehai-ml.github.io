@@ -10,7 +10,7 @@ One of the biggest challenges in the field of psychiatry is the inconsistent dia
 
 My PhD project aims to address both of these questions. 1) Can we identify a **neuroimaging marker** specific to schizophrenia or ASD in babies, long before the average age of onset of such diseases and 2) Can we learn something about the **early biological underpinning** that may contribute to these diseases?
 
-<!-- Images ![alt text](images/brain_plots.png "Trees") -->
+
 
 <!--- <p class="text-center">
 {% include elements/button.html link="https://github.com/YoussefRaafatNasry/portfolYOU" text="Learn More" %}

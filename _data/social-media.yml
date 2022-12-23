@@ -1,11 +1,6 @@
 # Get Icons  from : https://fontawesome.com/icons
 # Get Colors from : https://brandcolors.net/
 
-orcid:
-  url : https://www.orcid.org/
-  icon: fab fa-orcid
-  color : 333333
-
 behance:
   url   : https://www.behance.net/
   icon  : fab fa-behance

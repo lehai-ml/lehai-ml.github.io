@@ -1,14 +1,33 @@
-- title: PhD student, King's College London, London, UK
+- title: PhD candidate, King's College London, UK
   from: 2020
-  to: present
+  to: Oct 2023
   description: |
-    - *Hello*
-    - Hello
+    *Characterising abnormal brain development in babies using structural MRI and genetics data.*
+    - Awarded a [competitive scholarship](https://kcl-mrcdtp.com/students/le-hai/) to pursue doctoral research for 4 years.
+    - Implemented statistical models to complex imaging and genetic dataset to extract novel insights in the field of early life psychiatry.
+    - Regularly presented findings in weekly lab meetings and in international conferences.
+    - Expected to produce and defend a 200 - page thesis and author publications in high impact scientific journals.
 
-- title: PhD student, King's College London, London, UK
-  from: 2020
-  to: present
+- title: Health Data Analyst and Policy Intern, UK Health Security Agency, UK
+  from: Feb 2022
+  to: May 2022
   description: |
-    - *Hello*
-    - Hello
+    - Part of the COVID-19 International Surveillance Team responsible for identifiying emergence of novel coronavirus strains.
+    - Proposed tools to enhance data acquistion from mutliple sources and novel data visualisation tecniques to improve data analysis process.
+    - Disseminated and presented findings in 2 policy reports to senior level teams.
 
+- title: Teaching Assistant & ML Instructor, King's College London, UK
+  from: Oct 2019
+  to: Oct 2022
+  description: |
+    - Led weekly tutorials on basics of Python programming and neuroscience for over 100 bachelor's and master's students every year.
+    - Independently devised and conducted monthly workshops on deep learning concepts and applications with minimal coding for over 30 students of non-technical background, resulting in 3-fold increase in workshop attendance the following year.
+  
+- title: Research Assistant, King's College London and London School of Hygiene and Tropical Medicine, UK
+  from: 2017
+  to: 2019
+  description: |
+    - Designed projects and managed independently multiple experiments (PCR, gene-sequencing, microscopy) to assist work of 5 senior researchers.
+    - Self-taught and optimised data analysis pipelines in <mark>R</mark> and <mark>Python</mark> to automate existing lab protocols and reduce processing time by 90%.
+    - Co-authored 3 publications in scientific journals and awarded highest grades for 2 consecutive final year reports.
+  
