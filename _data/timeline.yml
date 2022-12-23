@@ -1,5 +1,14 @@
 - title: PhD student, King's College London, London, UK
   from: 2020
   to: present
-  description: Hello
-              - Hello
+  description: |
+    - *Hello*
+    - Hello
+
+- title: PhD student, King's College London, London, UK
+  from: 2020
+  to: present
+  description: |
+    - *Hello*
+    - Hello
+
