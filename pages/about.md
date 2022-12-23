@@ -9,12 +9,11 @@ weight: 1
 
 Hi I am **{{ site.author.name }}** :wave:,<br>
 
-I am London-based Vietnamese PhD student, born in Germany and raised in Bulgaria. I have extensive work experience in wet-lab setting (over 3 years) and in data analysis (over 4 years). My works involves analysing Neuroimaing scans, and genetic data. But I am more interested in learning about data analysis in general. 
+I am a PhD student 🤓 based in London :uk:. I have extensive data analysis experience both inside and outside of academia (6+ years). From sequencing pathogens 🦠 and mutating worms :microscope: to analysing babies 🧠 scans, I have always enjoyed the interdisciplinary environment and the process of challenging myself to new things. Outside of work, I like lifting 🏋️‍♂️, reading war books and listening to comedy podcasts.
 
 <div class="row">
 {% include about/skills.html title="Programming Skills" source=site.data.programming-skills %}
-{% include about/skills.html title="Other Skills" source=site.data.other-skills %}
-{% include about/skills.html title="Other Skills" source=site.data.other-skills %}
+{% include about/skills.html title="Language Skills" source=site.data.languages %}
 </div>
 
 <div class="row">

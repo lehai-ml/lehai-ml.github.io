@@ -1,20 +1,16 @@
 ---
-name: Linking neuroimaging and genetic data related to schizophrenia and ASD in babies
+name: Linking brain imaging and genetic data related to psychiatric disorders in babies
 tools: [Python, Bash, diffusion MRI]
-image: https://www.sketchappsources.com/resources/source-image/movie-badges-jurajjurik.png
-description: My PhD project at King's College London
+image: all_segmentations.png
 ---
 
 # Examining neuroimaging markers related to psychiatric disorders in neonates using diffusion MRI and machine learning
 
-Schizophrenia is a psychiatric disorder 
+One of the biggest challenges in the field of psychiatry is the inconsistent diagnoses, which are primarily done based on individual behavioural symptoms. This is exarcebated when there is overlapping in behavioural manifestations between several disorders. Current treatments also appear very limited, as there is a big gap in our understanding of the biological underpinning of such disorders. Recent research suggest many of the psychiatric disorders may have early life origins, i.e. disruption to early brain developmental processes either through environmental and/or genetic factors predispose one's brain to become schizophrenic, ASD, etc. If this is the case, then we may design treatments targeted at these early time windows, long before the original onset of such disorders.
 
-![preview](https://www.sketchappsources.com/resources/source-image/we-were-soldiers-landing-page-dbruggisser.jpg)
+My PhD project aims to address both of these questions. 1) Can we identify a **neuroimaging marker** specific to schizophrenia or ASD in babies, long before the average age of onset of such diseases and 2) Can we learn something about the **early biological underpinning** that may contribute to these diseases?
 
-## Search Movies
 
-![search](https://www.sketchappsources.com/resources/source-image/microsoft-windows-10-virtual-keyboard-diogo-sousa.png)
-
-<p class="text-center">
+<!--- <p class="text-center">
 {% include elements/button.html link="https://github.com/YoussefRaafatNasry/portfolYOU" text="Learn More" %}
-</p>
+</p> --->

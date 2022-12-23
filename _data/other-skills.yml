@@ -1,7 +1,11 @@
-- name: Adobe Photoshop
+- name: Juggling
   percentage: 95
   color: info
 
-- name: Adobe Illustrator
+- name: Rubik's cube
+  percentage: 90
+  color: success
+
+- name: Benching
   percentage: 90
   color: success
