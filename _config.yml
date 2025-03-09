@@ -1,6 +1,6 @@
 ### Site Settings ### #run bundle exec jekyll serve
 title               : Hai Anh Le
-description         : Passionate health data analyst 🤓 with extensive experience in quantitative research 🧬 📈. Proficient in visualising complex data 🎨 and producing comprehensive reports.
+description         : Budding data scientist with extensive experience in quantitative research 🧬 📈. Proficient in visualising complex data 🎨 and producing comprehensive reports.
 baseurl             : "" # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 
 ### Plugins ###
@@ -15,7 +15,7 @@ nav_exclude:                                            # The following paths ar
 author:
   name              : Hai
   image             : https://avatars.githubusercontent.com/u/60798941?v=4
-  email             : le.hai@kcl.ac.uk
+  email             : l.haimcl@gmail.com
   github            : lehai-ml
   linkedin          : haileanh
   soundcloud        : hai_lofi
