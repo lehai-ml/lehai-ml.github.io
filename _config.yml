@@ -1,6 +1,6 @@
 ### Site Settings ### #run bundle exec jekyll serve
 title               : Hai Anh Le
-description         : Passionate data scientist 🤓 with extensive experience in quantitative research 🧬 📈. Proficient in visualising complex data 🎨 and producing comprehensive reports.
+description         : ""
 baseurl             : "" # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 
 ### Plugins ###
@@ -24,6 +24,9 @@ author:
 collections:
   projects:
     output: true
+  blogs:
+    output: true
+
 
 ## Defaults for collections ###
 defaults:
@@ -32,8 +35,7 @@ defaults:
       type: "projects"
     values:
       layout: "page"
-
-
+      
 ### Exclude from processing ###
 exclude:
   - README.md
