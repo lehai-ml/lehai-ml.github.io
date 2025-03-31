@@ -6,11 +6,9 @@
         <div class="blog-post">
           <h2><a href="{{ blog.url }}">{{ blog.title }}</a></h2>
           <p>{{ blog.excerpt }}</p>
-          <a href="{{ blog.url }}">Read more...</a>
-          <p>Tags: 
-            {% for tag in blog.tags %}
-              <span class="tag-bubble" data-tag="{{ tag }}">{{ tag }}</span>
-            {% endfor %}
+          <p> {%- for tag in blog.tags -%}
+            <span class="badge badge-pill text-primary border border-primary ml-1">{{ tag }}</span>
+            {%- endfor -%}
           </p>
         </div>
       {% endfor %}
@@ -22,45 +20,3 @@
     </div>
   </div>
 </div>
-
-<!-- 
-<script>
-  // JavaScript code to handle tag filtering
-  document.addEventListener("DOMContentLoaded", function () {
-    const tagBubbles = document.querySelectorAll('.tag-bubble');
-    const posts = document.querySelectorAll('.blog-post');
-    let selectedTags = [];
-
-    function filterPosts() {
-      posts.forEach(post => {
-        const postTags = post.getAttribute('data-tags').split(',');
-        const matches = selectedTags.some(tag => postTags.includes(tag));
-
-        if (selectedTags.length === 0 || matches) {
-          post.style.display = 'block';  // Show post
-        } else {
-          post.style.display = 'none';  // Hide post
-        }
-      });
-    }
-
-    tagBubbles.forEach(tag => {
-      tag.addEventListener('click', function () {
-        const tagValue = this.getAttribute('data-tag');
-
-        if (selectedTags.includes(tagValue)) {
-          selectedTags = selectedTags.filter(tag => tag !== tagValue); // Remove tag from selection
-          this.classList.remove('selected');
-        } else {
-          selectedTags.push(tagValue);
-          this.classList.add('selected');
-        }
-
-        filterPosts();
-      });
-    });
-
-    filterPosts(); // Initial filter
-  });
-</script>
- -->

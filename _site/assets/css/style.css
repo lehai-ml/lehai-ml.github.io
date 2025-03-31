@@ -110,14 +110,6 @@ body { font-family: "Poppins", sans-serif; }
 
 .blog-post a:hover { text-decoration: underline; }
 
-/* Style the tag bubbles */
-.tag-bubble { display: inline-block; padding: 8px 12px; margin: 5px; background-color: #ddd; border-radius: 20px; cursor: pointer; transition: background-color 0.3s ease; }
-
-.tag-bubble:hover { background-color: #aaa; }
-
-/* Highlight selected tags */
-.tag-bubble.selected { background-color: #007bff; color: white; }
-
 .link-after, .nav-link::after, .navbar-brand::after, .nav-item.active::after { content: ""; display: block; height: 0.15em; background: #007bff; }
 
 .nav-link::after, .navbar-brand::after { width: 0; transition: width 0.35s; }

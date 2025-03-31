@@ -15,11 +15,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="Blog">
+  <meta property="og:title" content="Blogs">
   <meta property="og:description" content="">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/60798941?v=4">
 
-  <title>Blog</title>
+  <title>Blogs</title>
   <meta name="description" content="">
 
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
@@ -57,7 +57,7 @@
 
       <a class="nav-item nav-link " href="/about/">About</a>
 
-      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+      <a class="nav-item nav-link active" href="/blogs/">Blogs</a>
 
       <a class="nav-item nav-link " href="/projects/">Projects</a>
 
@@ -74,18 +74,15 @@
 
       
         <div class="blog-post">
-          <h2><a href="/blog/my-first-post/">My First Blog Post</a></h2>
-          <p>This is a short preview of my first blog post...</p>
-          <a href="/blog/my-first-post/">Read more...</a>
-          <p>Tags: 
-            
-              <span class="tag-bubble" data-tag="jekyll">jekyll</span>
-            
-              <span class="tag-bubble" data-tag="web development">web development</span>
-            
-              <span class="tag-bubble" data-tag="tutorials">tutorials</span>
-            
-          </p>
+          <h2><a href="/blogs/categorical-variables-encoding/">How to encode categorical variables and interpret them?</a></h2>
+          <p>As the appetite for black box models increases, so is our lack of clear understanding of the </p>
+          <p><span class="badge badge-pill text-primary border border-primary ml-1">statistics</span><span class="badge badge-pill text-primary border border-primary ml-1">fundamentals</span></p>
+        </div>
+      
+        <div class="blog-post">
+          <h2><a href="/blogs/explainable-ai/">Explainable AI</a></h2>
+          <p>As the appetite for black box models increases, so is our lack of clear understanding of the </p>
+          <p><span class="badge badge-pill text-primary border border-primary ml-1">machine learning</span><span class="badge badge-pill text-primary border border-primary ml-1">tutorial</span></p>
         </div>
       
     </div>
@@ -134,49 +131,6 @@
     </div>
   </div>
 </div>
-
-<!-- 
-<script>
-  // JavaScript code to handle tag filtering
-  document.addEventListener("DOMContentLoaded", function () {
-    const tagBubbles = document.querySelectorAll('.tag-bubble');
-    const posts = document.querySelectorAll('.blog-post');
-    let selectedTags = [];
-
-    function filterPosts() {
-      posts.forEach(post => {
-        const postTags = post.getAttribute('data-tags').split(',');
-        const matches = selectedTags.some(tag => postTags.includes(tag));
-
-        if (selectedTags.length === 0 || matches) {
-          post.style.display = 'block';  // Show post
-        } else {
-          post.style.display = 'none';  // Hide post
-        }
-      });
-    }
-
-    tagBubbles.forEach(tag => {
-      tag.addEventListener('click', function () {
-        const tagValue = this.getAttribute('data-tag');
-
-        if (selectedTags.includes(tagValue)) {
-          selectedTags = selectedTags.filter(tag => tag !== tagValue); // Remove tag from selection
-          this.classList.remove('selected');
-        } else {
-          selectedTags.push(tagValue);
-          this.classList.add('selected');
-        }
-
-        filterPosts();
-      });
-    });
-
-    filterPosts(); // Initial filter
-  });
-</script>
- -->
-
   </main>
   <footer class="mt-auto py-3 text-center">
 

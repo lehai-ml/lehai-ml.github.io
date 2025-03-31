@@ -15,11 +15,11 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
 
   <meta property="og:type" content="website">
-  <meta property="og:title" content="My First Blog Post">
+  <meta property="og:title" content="How to encode categorical variables and interpret them?">
   <meta property="og:description" content="">
   <meta property="og:image" content="https://avatars.githubusercontent.com/u/60798941?v=4">
 
-  <title>My First Blog Post</title>
+  <title>How to encode categorical variables and interpret them?</title>
   <meta name="description" content="">
 
   <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
@@ -57,7 +57,7 @@
 
       <a class="nav-item nav-link " href="/about/">About</a>
 
-      <a class="nav-item nav-link active" href="/blog/">Blog</a>
+      <a class="nav-item nav-link active" href="/blogs/">Blogs</a>
 
       <a class="nav-item nav-link " href="/projects/">Projects</a>
 
@@ -69,30 +69,50 @@
 
 </nav>
     <div class="col-lg-10 mx-auto mt-5 markdown-body">
-    <h1><b>My First Blog Post</b></h1>
+    <h1><b>How to encode categorical variables and interpret them?</b></h1>
 
 <p class="post-metadata text-muted">
-  19 March 2024 -  
+  19 March 2025 -  
   <b>less than 1 min read time</b>
 
   <br>Tags: 
     
-    <a class="text-decoration-none no-underline" href="/blog/tags#jekyll">
-      <span class="tag badge badge-pill text-primary border border-primary">jekyll</span>
+    <a class="text-decoration-none no-underline" href="/blog/tags#statistics">
+      <span class="tag badge badge-pill text-primary border border-primary">statistics</span>
     </a>
     
-    <a class="text-decoration-none no-underline" href="/blog/tags#web-development">
-      <span class="tag badge badge-pill text-primary border border-primary">web development</span>
-    </a>
-    
-    <a class="text-decoration-none no-underline" href="/blog/tags#tutorials">
-      <span class="tag badge badge-pill text-primary border border-primary">tutorials</span>
+    <a class="text-decoration-none no-underline" href="/blog/tags#fundamentals">
+      <span class="tag badge badge-pill text-primary border border-primary">fundamentals</span>
     </a>
     </p>
 
-<h2 id="introduction">Introduction</h2>
+<h1 id="introduction">Introduction</h1>
 
-<p>This is the <strong>first few lines</strong> of my blog post.</p>
+<p><em>How do you encode categorical variables?</em></p>
+
+<p>This was a question I was posed in a recent data science interview. I was stumped, after talking an hour about LLMs, my mind drew blanks when being asked such a simple question.</p>
+
+<p>“<em>Well you obviously can do One Hot Encoding, where each of the categorical variables is encoded as 1 or 0…and there is a Label Encoding, where the categories are encoded as 1,2,3…</em>”, I said.
+“<em>The disadvantage of One-Hot Encoding is that when you have a lot of variables, you will have to create a very large number of features. I think you would use Label Encoding when you have less number of categories</em>”.</p>
+
+<p>“<em>Well, if we were to encode the cities (e.g., NY, London, Hanoi) with Label Encoding, how would you intepret if one city is encoded as 1 and the other as 3?</em>”, as soon as the interviewer said this, I knew I screwed up. Never having worked with dataset beyond two categories (e.g., Male vs. Female), for the life of me I could not think of how to explain regression models where there are multi-class categories. In fact, I realised I have always relied on the statistical packages provided and have not trully understood the reasoning behind it.</p>
+
+<h1 id="how-do-you-encode-categorical-variables">How do you encode categorical variables?</h1>
+
+<p>There are two types of categorical data:</p>
+<ul>
+  <li>Ordinal data</li>
+  <li>Nominal data</li>
+</ul>
+
+<p><strong>Ordinal data</strong> are those where there are <em>inherent</em> order (i.e., they can be ranked and there is some meaningful differences in the ranking). For example, the grade scores such as A, B, C, D can be ordered.
+<strong>Nominal data</strong> are those where there are no inherent order, such as names of places.</p>
+
+<p>We are interested in encoding categorical variables, because machine learning models work best with numerical data rather than text. Additionally, by encoding the categories into equal weights, we prevent introducing bias in the model.</p>
+
+<h2 id="one-hot-encoding">One Hot Encoding</h2>
+
+<p>This type of encoding is easy to understand.</p>
 
 
 
