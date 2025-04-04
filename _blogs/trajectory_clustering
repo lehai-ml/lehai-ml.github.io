@@ -1,0 +1,63 @@
+---
+layout: post
+title: "Latent Class Growth Analysis and Growth Mixture Modelling"
+date: 2025-03-19
+excerpt: ""
+permalink: /blogs/latent-class-growth-analysis-and-growth-mixture-modelling/
+tags: [statistics, r, clustering]
+---
+
+# Introduction
+
+Clustering is the task of grouping set of data into subgroups, such that data points within a subgroup (a cluster) is similar to each other but is different from other subgroups. However, clustering algorithm such as K-means clustering does not necessarily consider the temporal aspect of the data.
+
+Growth mixture modelling (GMM) and Laent Class Growth Analysis (LCGA) are two types of longitudional modelling techniques that identify *homogenous* subpopulations based on growth trajectories. In medical research, the tools can be applied to study the different developmental trajectories within a population.
+
+<br>
+<br>
+
+>> *A useful framework for beginning to understand latent class analysis and growth mixture modelling is the distinction between person-centred and variable-centred approaches. Variable-centred approaches such as regression [...] focuses on describing the relationships among variables. The goal is to identify significant predictors of outcomes, and describe how dependent and independent variables are related. Person-centred approaches, on the other hand, include methods such as cluster analysis, latent class analysis, and finite mixture modelling. The focus is on the relationships among indiviudals, and the goal is to classify individuals into distinct groups or categories based on individual response patterns*[[1]](#1).
+
+<br>
+<br>
+
+One example that I am very interested in was this paper by Bandoli et al. [[2]](#2), where the authors have examine whether patterns of prenatal alcohol exposure differentially affect infants. The following graph very much illustrate the powerful ability of longitudional modelling.
+
+>![](https://cdn.ncbi.nlm.nih.gov/pmc/blobs/cda1/7722075/69e1f92bc02a/nihms-1629488-f0001.jpg)
+
+Here, it shows the mean absolute ounces of alcohol per day and 
+
+Suppose you have selected a 
+
+Unsupervised models:
+- K means longitudal
+    - create clusters
+    - calculate mean trjaectory within each cluster
+    - assign each individual to the cluster with the nearest mean trajectory, i.e., distance between individual's mean and trajectory mean minimised
+    - repeat steps 1-3 until there are no more changes in the cluster asignment
+    - solution do not always converge
+- Group-based trajectory models
+    - Analyst specifies polynomial shapes of trajectories and number of possible groups
+    - GBTM simultaneously estiamtes
+        - A multinomial model for group-assignment probabilities
+        - models estimating longitudinal trajectories using polynomial functions of time, e.g., quadratic, cubic
+        - Individuals are assigned to the trajectory group to which they had the highest membership probability
+- Latent class analysis (LCA)
+- Latent class growth mixture modeling
+    - Similar to GBTM, but allows for variations in individual trajectories within the same group.
+- Hiearchical Cluster analysis
+
+
+Group-based trajectory modeling is a statistical method to idenfity groups of individuals following a similar trajectory over time based on a single outcome [[1]](#1).   
+
+
+
+# References
+<a id="1"></a> [1] [Jung and Wickrama. An Introduction to Latent Class Growth analysis and Growth Mixture Modeling](https://www.statmodel.com/download/JungWickramaLCGALGMM.pdf)
+
+<a id="2"></a> [2] [Bandoli *et al*, 2020. Patterns of Prenatal Alcohol Exposure and Alcohol-Related Dysmorphic Features](https://pubmed.ncbi.nlm.nih.gov/32772389/) 
+
+<a id="1"></a> [1] [Nagin *et al*., 2016. Group-based multi-trajectory modeling](https://www.andrew.cmu.edu/user/bjones/refpdf/multtraj.pdf)
+
+
+
