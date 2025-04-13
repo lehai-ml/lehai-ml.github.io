@@ -1,0 +1,217 @@
+<!DOCTYPE html>
+
+<html lang="en" class="h-100">
+
+<head>
+
+  
+  
+  
+
+  
+
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Latent Class Growth Analysis and Growth Mixture Modelling">
+  <meta property="og:description" content="">
+  <meta property="og:image" content="https://avatars.githubusercontent.com/u/60798941?v=4">
+
+  <title>Latent Class Growth Analysis and Growth Mixture Modelling</title>
+  <meta name="description" content="">
+
+  <link rel="shortcut icon" type="image/x-icon" href="/assets/favicon.ico">
+
+  <!-- Theme style -->
+  <script src="/assets/js/theme.js"></script>
+
+  <!-- Font Awesome CDN -->
+  <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.10.0/css/all.css">
+
+  <!-- Bootstrap CSS CDN -->
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.0/dist/css/bootstrap.min.css">
+
+  <!-- Animate CSS CDN -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/3.7.0/animate.css">
+
+  <!-- Custom CSS -->
+  <link rel="stylesheet" href="/assets/css/style.css">
+
+</head>
+
+<body class="h-100 d-flex flex-column">
+
+  <main class="flex-shrink-0 container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-themed">
+
+  <!-- <a class="navbar-brand" href="/"><h5><b>Hai Anh Le</b></h5></a> -->
+
+  <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavAltMarkup" aria-controls="navbarNavAltMarkup" aria-expanded="false" aria-label="Toggle navigation">
+    <i class="fas fa-1x fa-bars text-themed"></i>
+  </button>
+
+  <div class="collapse navbar-collapse" id="navbarNavAltMarkup">
+    <div class="navbar-nav ml-auto"><a class="nav-item nav-link active" href="/"></a>
+
+      <a class="nav-item nav-link " href="/about/">About</a>
+
+      <a class="nav-item nav-link active" href="/blogs/">Blogs</a>
+
+      <a class="nav-item nav-link " href="/projects/">Projects</a>
+
+      
+
+      <span id="theme-toggler" class="nav-item nav-link" role="button" onclick="toggleTheme()"></span>
+    </div>
+  </div>
+
+</nav>
+    <div class="col-lg-10 mx-auto mt-5 markdown-body">
+    <h1><b>Latent Class Growth Analysis and Growth Mixture Modelling</b></h1>
+
+<p class="post-metadata text-muted">
+  19 March 2025 -  
+  <b>3 mins read time</b>
+
+  <br>Tags: 
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#statistics">
+      <span class="tag badge badge-pill text-primary border border-primary">statistics</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#r">
+      <span class="tag badge badge-pill text-primary border border-primary">r</span>
+    </a>
+    
+    <a class="text-decoration-none no-underline" href="/blog/tags#clustering">
+      <span class="tag badge badge-pill text-primary border border-primary">clustering</span>
+    </a>
+    </p>
+
+<h1 id="introduction">Introduction</h1>
+
+<p>Clustering is the task of grouping set of data into subgroups, such that data points within a subgroup (a cluster) is similar to each other but is different from other subgroups. However, clustering algorithm such as K-means clustering does not necessarily consider the temporal aspect of the data.</p>
+
+<p>Growth mixture modelling (GMM) and Latent Class Growth Analysis (LCGA) are two types of longitudional modelling techniques that identify <em>homogenous</em> subpopulations based on growth trajectories. In medical research, the tools can be applied to study the different developmental trajectories within a population.</p>
+
+<p><br />
+<br /></p>
+
+<blockquote>
+  <blockquote>
+    <p><em>A useful framework for beginning to understand latent class analysis and growth mixture modelling is the distinction between person-centred and variable-centred approaches. Variable-centred approaches such as regression […] focuses on describing the relationships among variables. The goal is to identify significant predictors of outcomes, and describe how dependent and independent variables are related. Person-centred approaches, on the other hand, include methods such as cluster analysis, latent class analysis, and finite mixture modelling. The focus is on the relationships among indiviudals, and the goal is to classify individuals into distinct groups or categories based on individual response patterns</em><a href="#1">[1]</a>.</p>
+  </blockquote>
+</blockquote>
+
+<p><br />
+<br /></p>
+
+<p>One example that I am very interested in was this paper by Bandoli et al. <a href="#2">[2]</a>, where the authors have examine whether patterns of prenatal alcohol exposure differentially affect dysphormic features in infants.</p>
+
+<blockquote>
+  <p><img src="https://cdn.ncbi.nlm.nih.gov/pmc/blobs/cda1/7722075/69e1f92bc02a/nihms-1629488-f0001.jpg" alt="" /></p>
+</blockquote>
+
+<p>Here, using longitudinal modelling, the authors found 5 distinct trajectories of development, which corresponded to high sustaiend, moderate/high, low/moderate sustained, low/moderate and minimal/no prenatal alcohol exposure. Dysmorphology score was then calculated and examined for association with trajectory of prenatal alcohol exposure.</p>
+
+<h2 id="implementation">Implementation</h2>
+
+<p>The following two tutorials explain quite clearly how to carry out LCGA and GMM in R <a href="#3">[3,4]</a>. In a nutshell, imagine you have a set of</p>
+
+<!-- 
+Suppose you have selected a 
+
+Unsupervised models:
+- K means longitudal
+    - create clusters
+    - calculate mean trjaectory within each cluster
+    - assign each individual to the cluster with the nearest mean trajectory, i.e., distance between individual's mean and trajectory mean minimised
+    - repeat steps 1-3 until there are no more changes in the cluster asignment
+    - solution do not always converge
+- Group-based trajectory models
+    - Analyst specifies polynomial shapes of trajectories and number of possible groups
+    - GBTM simultaneously estiamtes
+        - A multinomial model for group-assignment probabilities
+        - models estimating longitudinal trajectories using polynomial functions of time, e.g., quadratic, cubic
+        - Individuals are assigned to the trajectory group to which they had the highest membership probability
+- Latent class analysis (LCA)
+- Latent class growth mixture modeling
+    - Similar to GBTM, but allows for variations in individual trajectories within the same group.
+- Hiearchical Cluster analysis
+
+
+Group-based trajectory modeling is a statistical method to idenfity groups of individuals following a similar trajectory over time based on a single outcome [[1]](#1).    -->
+
+<h1 id="references">References</h1>
+<p><a id="1"></a> [1] <a href="https://www.statmodel.com/download/JungWickramaLCGALGMM.pdf">Jung and Wickrama. An Introduction to Latent Class Growth analysis and Growth Mixture Modeling</a></p>
+
+<p><a id="2"></a> [2] <a href="https://pubmed.ncbi.nlm.nih.gov/32772389/">Bandoli <em>et al</em>, 2020. Patterns of Prenatal Alcohol Exposure and Alcohol-Related Dysmorphic Features</a></p>
+
+<p><a id="3"></a> [3] <a href="https://www.youtube.com/watch?v=cqnpN1k1mPk&amp;ab_channel=RegorzStatistik">https://www.youtube.com/watch?v=cqnpN1k1mPk&amp;ab_channel=RegorzStatistik</a></p>
+
+<p><a id="4"></a> [4] <a href="https://www.youtube.com/watch?v=sQfIeOh3rJQ&amp;ab_channel=RegorzStatistik">https://www.youtube.com/watch?v=sQfIeOh3rJQ&amp;ab_channel=RegorzStatistik</a></p>
+
+<p><a id="1"></a> [1] <a href="https://www.andrew.cmu.edu/user/bjones/refpdf/multtraj.pdf">Nagin <em>et al</em>., 2016. Group-based multi-trajectory modeling</a></p>
+
+
+
+
+</div>
+  </main>
+  <footer class="mt-auto py-3 text-center">
+
+  <small class="text-muted mb-2">
+    Made with <i class="fas fa-heart"></i>
+    by <strong>Hai</strong>
+  </small>
+  
+</footer>
+
+  <!-- GitHub Buttons -->
+<script async defer src="https://buttons.github.io/buttons.js"></script>
+
+<!-- jQuery CDN -->
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+
+<!-- Popper.js CDN -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.6/umd/popper.min.js"></script>
+
+<!-- Bootstrap JS CDN -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"></script>
+
+<!-- wow.js CDN & Activation -->
+<script src="https://cdnjs.cloudflare.com/ajax/libs/wow/1.1.2/wow.js"></script>
+<script> new WOW().init(); </script>
+
+<!-- Initialize all tooltips -->
+<script>
+$(function () {
+    $('[data-toggle="tooltip"]').tooltip()
+})
+</script>
+
+<!-- Initialize math equations-->
+<script type="text/javascript">
+    window.MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']],
+        displayMath: [['$$', '$$'], ['\\[', '\\]']]
+      },
+      svg: {
+        fontCache: 'global'
+      }
+    };
+  </script>
+  <script type="text/javascript" async
+    src="https://polyfill.io/v3/polyfill.min.js?features=es6">
+  </script>
+  <script type="text/javascript" async
+    src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js">
+  </script>
+  
+
+</body>
+
+</html>

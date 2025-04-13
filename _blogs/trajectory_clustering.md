@@ -11,7 +11,7 @@ tags: [statistics, r, clustering]
 
 Clustering is the task of grouping set of data into subgroups, such that data points within a subgroup (a cluster) is similar to each other but is different from other subgroups. However, clustering algorithm such as K-means clustering does not necessarily consider the temporal aspect of the data.
 
-Growth mixture modelling (GMM) and Laent Class Growth Analysis (LCGA) are two types of longitudional modelling techniques that identify *homogenous* subpopulations based on growth trajectories. In medical research, the tools can be applied to study the different developmental trajectories within a population.
+Growth mixture modelling (GMM) and Latent Class Growth Analysis (LCGA) are two types of longitudional modelling techniques that identify *homogenous* subpopulations based on growth trajectories. In medical research, the tools can be applied to study the different developmental trajectories within a population.
 
 <br>
 <br>
@@ -21,12 +21,17 @@ Growth mixture modelling (GMM) and Laent Class Growth Analysis (LCGA) are two ty
 <br>
 <br>
 
-One example that I am very interested in was this paper by Bandoli et al. [[2]](#2), where the authors have examine whether patterns of prenatal alcohol exposure differentially affect infants. The following graph very much illustrate the powerful ability of longitudional modelling.
+One example that I am very interested in was this paper by Bandoli et al. [[2]](#2), where the authors have examine whether patterns of prenatal alcohol exposure differentially affect dysphormic features in infants.
 
 >![](https://cdn.ncbi.nlm.nih.gov/pmc/blobs/cda1/7722075/69e1f92bc02a/nihms-1629488-f0001.jpg)
 
-Here, it shows the mean absolute ounces of alcohol per day and 
+Here, using longitudinal modelling, the authors found 5 distinct trajectories of development, which corresponded to high sustaiend, moderate/high, low/moderate sustained, low/moderate and minimal/no prenatal alcohol exposure. Dysmorphology score was then calculated and examined for association with trajectory of prenatal alcohol exposure.
 
+## Implementation
+
+The following two tutorials explain quite clearly how to carry out LCGA and GMM in R [[3,4]](#3). In a nutshell, imagine you have a set of 
+
+<!-- 
 Suppose you have selected a 
 
 Unsupervised models:
@@ -48,7 +53,7 @@ Unsupervised models:
 - Hiearchical Cluster analysis
 
 
-Group-based trajectory modeling is a statistical method to idenfity groups of individuals following a similar trajectory over time based on a single outcome [[1]](#1).   
+Group-based trajectory modeling is a statistical method to idenfity groups of individuals following a similar trajectory over time based on a single outcome [[1]](#1).    -->
 
 
 
@@ -56,6 +61,12 @@ Group-based trajectory modeling is a statistical method to idenfity groups of in
 <a id="1"></a> [1] [Jung and Wickrama. An Introduction to Latent Class Growth analysis and Growth Mixture Modeling](https://www.statmodel.com/download/JungWickramaLCGALGMM.pdf)
 
 <a id="2"></a> [2] [Bandoli *et al*, 2020. Patterns of Prenatal Alcohol Exposure and Alcohol-Related Dysmorphic Features](https://pubmed.ncbi.nlm.nih.gov/32772389/) 
+
+<a id="3"></a> [3] [https://www.youtube.com/watch?v=cqnpN1k1mPk&ab_channel=RegorzStatistik](
+https://www.youtube.com/watch?v=cqnpN1k1mPk&ab_channel=RegorzStatistik)
+
+<a id="4"></a> [4] [https://www.youtube.com/watch?v=sQfIeOh3rJQ&ab_channel=RegorzStatistik](
+https://www.youtube.com/watch?v=sQfIeOh3rJQ&ab_channel=RegorzStatistik)
 
 <a id="1"></a> [1] [Nagin *et al*., 2016. Group-based multi-trajectory modeling](https://www.andrew.cmu.edu/user/bjones/refpdf/multtraj.pdf)
 
