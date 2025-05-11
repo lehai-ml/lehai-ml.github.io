@@ -3,7 +3,7 @@ layout: post
 title: "How to encode categorical variables and interpret them?"
 date: 2025-04-01
 excerpt: "*How do you encode categorical variables?* This was a question I was posed in a recent data science interview. I was stumped"
-permalink: /blogs/categorical-variables-encoding/
+permalink: /blog/categorical-variables-encoding/
 tags: [statistics, fundamentals]
 ---
 

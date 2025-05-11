@@ -1,8 +1,8 @@
 <div class="wow animated fadeIn" data-wow-delay=".15s">
   <div class="row">
     <div class="col-md-8">
-      {% assign sorted_blogs = site.blogs | sort: "date" | reverse %}
-      {% for blog in sorted_blogs %}
+      {% assign sorted_blog = site.blog | sort: "date" | reverse %}
+      {% for blog in sorted_blog %}
         <div class="blog-post">
           <h2>
             {% if blog.external_url %}

@@ -24,7 +24,7 @@ author:
 collections:
   projects:
     output: true
-  blogs:
+  blog:
     output: true
 
 
