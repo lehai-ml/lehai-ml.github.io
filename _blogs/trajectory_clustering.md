@@ -27,7 +27,7 @@ One example that I am very interested in was this paper by Bandoli et al. [[2]](
 
 Here, using longitudinal modelling, the authors found 5 distinct trajectories of development, which corresponded to high sustaiend, moderate/high, low/moderate sustained, low/moderate and minimal/no prenatal alcohol exposure. Dysmorphology score was then calculated and examined for association with trajectory of prenatal alcohol exposure.
 
-## Implementation
+## Example
 
 The following two tutorials explain quite clearly how to carry out LCGA and GMM in R [[3,4]](#3). You can also use the following tutorial to generate some simulated data here [[5]](#5).
 
@@ -46,12 +46,12 @@ In R, both LCGA and GMM can be accomplished with the ``flemix`` package. Below i
     data = mydata,
     control = list(iter.max = 500, minprior = 0))
 
-This code will try out different configuration of the data, and allow us to choose the best fit model (different number of groups). Of interest to us are the following parameters:
+This code will try out different configurations of the data, and allows us to choose the best fit model. Of interest to us are the following parameters:
 
-    k-> the number of latent subpopulations we want the model to test.
-    nrep -> number of random initialisation. Here, the model can find a local minima, but may not be the most optimal output.
+* k-> the number of latent subpopulations we want the model to test.
+* nrep -> number of random initialisation. Here, the model can find a local minima, but may not be the most optimal output.
 
-In this particular model, we have fitted ``y`` as the dependent variable of ``time``. The error variance is the same in all data groups.
+In all model configurations, we have fitted ``y`` as the dependent variable of ``time``. The error variance is the same in all data groups.
 
 Example output:
 
@@ -63,38 +63,56 @@ iter | converged | k | Integrated Completed Likelihood
 34 | True | 4 | 1776.328
 29 | True | 5 | 1776.853
 
-This table indicates that the model can converge at all 5 different configurations of latent populations. Using a model fit measure such as the integrated completed likelihood, we can decide which model we want (here, the lower the ICL score the better). For example, here we can take the model with two and four latent subpopulations.
+This table indicates that the model can converge at all 5 different configurations. Using a model fit measure such as the integrated completed likelihood (or Akaike information criterion), we can decide which model we want (here, the lower the score the better). For example, here we can examine the models with two and four latent subpopulations, as the differences between the model fit measures in k=1 and k=2 is most dramatic, and there is not much difference between k=4 and k=5.
 
-The package also allow us to check the posterior probability. 
+The package also allows us to check the posterior probability of the cluster assignments.
 
-Next we can check the posterior probability, Here, the first model indicates that 250 observations were assigend to cluster 1 and 250 to cluster 2. Of the 500 observations, the posterior probability indicate there are 265 observations that have non-zero probability in cluster 1. Ideally, we want to have a higher ratio, because the higher the ratio, it means the model can better separate the observations between subpopulations. And when we plot this, we can see that for the model with 4 clusters, we cannot separate well between cluster 2 and cluster 3 from cluster 1 and cluster 4. 
-The next bit of work would be to use the cluster membership, and then fit a logistic regression with age, demographci information to get an idea if there are any association between characteristics and cluster membership.
+<div style="display: flex; gap: 20px; flex-wrap: wrap; justify-content: center;">
 
+  <div style="flex: 1; min-width: 300px;">
+    {{ "
+||prior|size|post>0|ratio|
+|---|---|---|---|---|
+|Comp.1| 0.5 |250|265|0.943|
+|Comp.2| 0.5 |250|255|0.980|
+" | markdownify }}
+  </div>
 
+  <div style="flex: 1; min-width: 300px;">
+    {{ "
+||prior|size|post>0|ratio|
+|---|---|---|---|---|
+|Comp.1| 0.318|  160|    250| 0.640|
+|Comp.2| 0.234|  120|    255| 0.471|
+|Comp.3| 0.266| 130|    245| 0.531|
+|Comp.4| 0.181|   90|    230| 0.391|
+" | markdownify }}
+  </div>
 
-<!-- 
-Suppose you have selected a 
+</div>
 
-Unsupervised models:
-- K means longitudal
-    - create clusters
-    - calculate mean trjaectory within each cluster
-    - assign each individual to the cluster with the nearest mean trajectory, i.e., distance between individual's mean and trajectory mean minimised
-    - repeat steps 1-3 until there are no more changes in the cluster asignment
-    - solution do not always converge
-- Group-based trajectory models
-    - Analyst specifies polynomial shapes of trajectories and number of possible groups
-    - GBTM simultaneously estiamtes
-        - A multinomial model for group-assignment probabilities
-        - models estimating longitudinal trajectories using polynomial functions of time, e.g., quadratic, cubic
-        - Individuals are assigned to the trajectory group to which they had the highest membership probability
-- Latent class analysis (LCA)
-- Latent class growth mixture modeling
-    - Similar to GBTM, but allows for variations in individual trajectories within the same group.
-- Hiearchical Cluster analysis
+<div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
 
+  <img src="/assets/images/trajectory_clustering/two_cluster_rootgram.jpg" alt="Two clusters" style="max-width: 45%; height: auto;">
 
-Group-based trajectory modeling is a statistical method to idenfity groups of individuals following a similar trajectory over time based on a single outcome [[1]](#1).    -->
+  <img src="/assets/images/trajectory_clustering/four_cluster_rootgram.jpg" alt="Four clusters" style="max-width: 45%; height: auto;">
+
+</div>
+
+Focusing on the result on the left, the model with two latent subpopulations indicates that equal number of observations were assigned to cluster 1 and cluster 2. Furthermore, the high ratio in either components indicates there is a high confidence of membership. This is, however, not the case for the model on the right. Although the model fit score is lower in this configuration, the rootograms indicate that compared to the first model, this model cannot reliably differentiate between the four clusters.
+
+This is more evident when we plot the cluster memberships for each observation as follows
+
+<div style="display: flex; gap: 20px; justify-content: center; flex-wrap: wrap;">
+
+  <img src="/assets/images/trajectory_clustering/two_clusters_trajectory.jpg" alt="Two clusters" style="max-width: 45%; height: auto;">
+
+  <img src="/assets/images/trajectory_clustering/four_clusters_trajectory.jpg" alt="Four clusters" style="max-width: 45%; height: auto;">
+
+</div>
+
+Thus, this suggests that the data would be better fit with a 2 latent population configurations. Next, we can examine whether the cluster membership is associated with any other covariates of interest, such as age, gender or demographic information.
+
 
 
 
