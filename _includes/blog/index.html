@@ -1,10 +1,16 @@
 <div class="wow animated fadeIn" data-wow-delay=".15s">
   <div class="row">
     <div class="col-md-8">
-
-      {% for blog in site.blogs %}
+      {% assign sorted_blogs = site.blogs | sort: "date" | reverse %}
+      {% for blog in sorted_blogs %}
         <div class="blog-post">
-          <h2><a href="{{ blog.url }}">{{ blog.title }}</a></h2>
+          <h2>
+            {% if blog.external_url %}
+              <a href="{{ blog.external_url }}" target="_blank" rel="noopener">{{ blog.title }}</a>
+            {% else %}
+              <a href="{{ blog.url }}">{{ blog.title }}</a>
+            {% endif %}
+          </h2>
           <p>{{ blog.excerpt }}</p>
           <p> {%- for tag in blog.tags -%}
             <span class="badge badge-pill text-primary border border-primary ml-1">{{ tag }}</span>
