@@ -2,21 +2,11 @@
 layout: post
 title: "How to encode categorical variables and interpret them?"
 date: 2025-04-01
-excerpt: "*How do you encode categorical variables?* This was a question I was posed in a recent data science interview. I was stumped"
+excerpt: "We are interested in encoding categorical variables, because machine learning models work best with numerical data rather than text. Additionally, by encoding the categories into equal weights, we prevent introducing bias in the model."
 permalink: /blog/categorical-variables-encoding/
-tags: [statistics, fundamentals]
+tags: [blog, statistics, fundamentals]
+pinned: true
 ---
-
-# Introduction
-
-*How do you encode categorical variables?*
-
-This was a question I was posed in a recent data science interview. I was stumped, my mind drew blanks when being asked such a simple question.
-
-"*Well you obviously can do One Hot Encoding, where each of the categorical variables is encoded as 1 or 0...and there is a Label Encoding, where the categories are encoded as 1,2,3...*", I said.
-"*The disadvantage of One-Hot Encoding is that when you have a lot of variables, you will have to create a very large number of features. I think...*".
-
-Never having worked with dataset beyond two categories, for the life of me I could not think of how to explain regression models where there are multi-class categories. In fact, I realised I have always relied on the statistical packages provided and have not truly understood the reasoning behind it. 
 
 # How do you encode categorical variables?
 

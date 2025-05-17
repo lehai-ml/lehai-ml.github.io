@@ -1,5 +1,5 @@
 ### Site Settings ### #run bundle exec jekyll serve
-title               : Hai Anh Le
+title               : Hai Anh Le, PhD
 description         : ""
 baseurl             : "" # Change to empty quotes if you are hosting your site at <your-username>.github.io directly
 
@@ -25,6 +25,8 @@ collections:
   projects:
     output: true
   blog:
+    output: true
+  about:
     output: true
 
 

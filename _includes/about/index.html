@@ -1,1 +1,20 @@
-
+<div class="wow animated fadeIn" data-wow-delay=".15s">
+  <div class="row">
+    <!-- Main content -->
+    <div class="col-md-8">
+      {% assign sorted_about = site.about | sort: "order" %}
+      {% for section in sorted_about %}
+        <div class="about-section mb-5">
+          <h2>{{ section.title }}</h2>
+          <div class="about-content">
+            {{ section.content | markdownify }}
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <!-- Sidebar -->
+    <div class="col-md-4">
+      {% include sidebar.html %}
+    </div>
+  </div>
+</div>
