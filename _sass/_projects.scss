@@ -73,3 +73,43 @@
   margin-top: 100px;}
 
 }
+
+.filter-list {
+  margin-top: 40px;
+  text-align: left;
+
+  .tag-filter,
+  .type-filter,
+  .pinned-filter {
+    display: inline-block;
+    margin: 5px 4px;
+    padding: 6px 10px;
+    font-size: 0.85rem;
+    border: 1px solid $primary;
+    border-radius: 20px;
+    cursor: pointer;
+    background-color: transparent;
+    color: $primary;
+    transition: background-color 0.2s, color 0.2s;
+  }
+
+  .tag-filter.active,
+  .type-filter.active,
+  .pinned-filter.active {
+    background-color: $primary;
+    color: white;
+  }
+
+  .pinned-list,
+  .tags-list {
+    margin-top: 10px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1px;
+    text-align: left;
+  }
+
+  .tags-list {
+    margin-top: 20px;
+  }
+}

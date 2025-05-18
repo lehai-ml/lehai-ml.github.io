@@ -1,10 +1,10 @@
 ---
-layout: post
 title: "Explainable AI"
 date: 2025-03-19
 excerpt: "As the appetite for black box models increases, so is our lack of clear understanding of the "
 permalink: /blog/explainable-ai/
 tags: [machine learning, tutorial]
+show: false
 ---
 
 # Introduction

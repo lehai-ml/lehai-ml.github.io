@@ -24,8 +24,6 @@ author:
 collections:
   projects:
     output: true
-  blog:
-    output: true
   about:
     output: true
 
@@ -36,7 +34,7 @@ defaults:
       path: ""
       type: "projects"
     values:
-      layout: "page"
+      layout: post
       
 ### Exclude from processing ###
 exclude:

@@ -1,16 +1,21 @@
-{% include sidebar.html %}
+{% include sidebar_projects.html %}
 
 <div class="card-columns">
 
   <!-- Local Projects -->
-  {% for project in site.projects %}
+  {% assign pinned_projects = site.projects | where: "pinned", true | sort: "date" | reverse %}
+  {% assign unpinned_projects = site.projects | where_exp: "project", "project.pinned != true" | sort: "date" | reverse %}
+  {% assign sorted_projects = pinned_projects | concat: unpinned_projects %}
 
-    {%- assign project_type  = "local" -%}
-    {%- assign project_id    = project.name | slugify -%}
+  {% for project in sorted_projects %}
+    
+    {%- assign project_show = project.show -%}
+    {%- assign project_type  = project.type -%}
+    {%- assign project_id    = project.title | slugify -%}
     {%- assign project_img   = project.image -%}
-    {%- assign project_name  = project.name -%}
+    {%- assign project_title  = project.title -%}
     {%- assign project_desc  = project.description -%}
-    {%- assign project_tools = project.tools -%}
+    {%- assign project_tags = project.tags -%}
 
     {%- if project.external_url -%}
       {%- assign project_url = project.external_url -%}
@@ -25,3 +30,115 @@
   {% endfor %}
 
 </div>
+
+<script>
+document.addEventListener("DOMContentLoaded", function () {
+
+  const tagButtons = document.querySelectorAll(".tag-filter");
+  const typeButtons = document.querySelectorAll(".type-filter");
+  const pinnedButton = document.querySelector(".pinned-filter");
+  const projectCards = document.querySelectorAll(".project-card");
+  const searchInput = document.getElementById("search-input");
+  let searchTerm = "";
+
+  let activeTags = new Set();
+  let activeType= null;
+  let showPinnedOnly = false;
+
+  // search term
+  searchInput.addEventListener("input", () => {
+    searchTerm = searchInput.value.trim().toLowerCase();
+    filterProjects();
+  });
+
+  // Handle pinned button
+  if (pinnedButton) {
+    pinnedButton.addEventListener("click", () => {
+      showPinnedOnly = !showPinnedOnly;
+      pinnedButton.classList.toggle("active");
+
+      filterProjects();
+    });
+  }
+
+  typeButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const selectedType = button.dataset.type.toLowerCase();
+      // Toggle active state
+      if (activeType == selectedType){
+        // Deselect
+        activeType = null;
+        button.classList.remove("active");
+      } else {
+        // Deselect other buttons
+        typeButtons.forEach(btn => btn.classList.remove("active"));
+        // Set active
+        activeType = selectedType;
+        button.classList.add("active");
+      }
+      filterProjects();
+    });
+  });
+
+  tagButtons.forEach(button => {
+    button.addEventListener("click", () => {
+      const tag = button.dataset.tag.toLowerCase();
+
+      // Toggle active state
+      if (activeTags.has(tag)) {
+        activeTags.delete(tag);
+        button.classList.remove("active");
+      } else {
+        activeTags.add(tag);
+        button.classList.add("active");
+      }
+
+      filterProjects();
+    });
+  });
+
+
+
+  function filterProjects() {
+    projectCards.forEach(card => {
+      const tags = card.dataset.tags.toLowerCase().split(",");
+      const type = card.dataset.type.toLowerCase();
+      const isPinned = card.dataset.pinned == "true";
+
+      // Text to search inside: name + description + tags
+      const name = card.querySelector(".card-title")?.textContent.toLowerCase() || "";
+      const description = card.querySelector(".card-text")?.textContent.toLowerCase() || "";
+
+
+      const matchesTags = [...activeTags].every(tag => tags.includes(tag.toLowerCase()));
+      const matchesType = !activeType || type == activeType;
+      const matchesPinned = !showPinnedOnly || isPinned
+      // Check if search term matches name, description or tags
+      const matchesSearch = searchTerm === "" || name.includes(searchTerm) || description.includes(searchTerm) || tags.some(tag => tag.includes(searchTerm));
+
+      if ((activeTags.size === 0 || matchesTags) && matchesType && matchesPinned && matchesSearch) {
+        card.style.display = "";
+      } else {
+        card.style.display = "none";
+      }
+    });
+  }
+});
+</script>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function () {
+    const icon = document.querySelector(".toggle-tags-icon");
+    const collapseEl = document.getElementById("tagsCollapse");
+
+    collapseEl.addEventListener("shown.bs.collapse", () => {
+      icon.classList.remove("bi-chevron-down");
+      icon.classList.add("bi-chevron-up");
+    });
+
+    collapseEl.addEventListener("hidden.bs.collapse", () => {
+      icon.classList.remove("bi-chevron-up");
+      icon.classList.add("bi-chevron-down");
+    });
+  });
+</script>

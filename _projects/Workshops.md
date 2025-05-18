@@ -1,8 +1,11 @@
 ---
-name: Fun applications of Deep Learning
-tools: [Python, fastai, deep learning, tensorflow]
+title: Fun applications of Deep Learning
+tags: [Python, fastai, deep learning, tensorflow]
 description: Series of workshops showcasing silly application of AI
 image: https://github.com/lehai-ml/KCLAI_soc/blob/main/images/Image_style_transfer.png?raw=true
+date: 2020-02-01
+pinned: false
+type: blog
 ---
 
 I created a series of workshops using fun examples of deep learning concepts. Backgrounds of students attended ranged from Humanities to Computer Science. 

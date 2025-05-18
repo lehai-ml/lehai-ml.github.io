@@ -1,6 +1,9 @@
 ---
-name: Mapping C. elegans neuronal interactions
-tools: [Python]
+title: Mapping C. elegans neuronal interactions
+tags: [Python]
 image: https://github.com/lehai-ml/c-elegans-modelling2020/raw/master/images/Final_model.png
 external_url: https://github.com/lehai-ml/c-elegans-modelling2020
+date: 2019-02-01
+pinned: false
+type: project
 ---

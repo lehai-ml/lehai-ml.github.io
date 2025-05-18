@@ -3,8 +3,9 @@ layout: post
 title: "Latent Class Growth Analysis and Growth Mixture Modelling"
 date: 2025-03-19
 excerpt: ""
-permalink: /blog/latent-class-growth-analysis-and-growth-mixture-modelling/
+permalink: /projects/latent-class-growth-analysis-and-growth-mixture-modelling/
 tags: [statistics, r, clustering]
+type: blog
 ---
 
 # Introduction

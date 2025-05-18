@@ -1,0 +1,38 @@
+<div class="sidebar">
+  <!-- Search bar -->
+  <div class="search-box mb-3">
+    <input type="text" id="search-input" class="form-control" placeholder="Search projects...">
+  </div>
+
+  <!-- Tags -->
+  <div class="filter-list">
+    <h5 class="mb-2">Filter by tags</h5>
+    <div class="pinned-list">
+      <span 
+        class="badge badge-pill badge-outline-primary pinned-filter" data-filter-type="pinned">📌</span>
+
+      {% assign post_types = site.projects | map: "type" | compact | flatten | uniq | sort %}
+      {% for post_type in post_types %}
+        <span class="badge badge-pill badge-outline-primary type-filter" data-type="{{ post_type | downcase }}">{{ post_type }}</span>
+      {% endfor %}
+    </div>
+
+    <!-- Tags Collapsible Toggle -->
+    <i 
+      class="bi bi-chevron-down ms-2 toggle-tags-icon"
+      data-bs-toggle="collapse"
+      data-bs-target="#tagsCollapse"
+      aria-controls="tagsCollapse"
+      role="button"
+    ></i>
+
+    <div class="collapse" id="tagsCollapse" show>
+      <div class="tags-list">
+      {% assign all_tags = site.projects | map: "tags" | compact | flatten | uniq | sort %}
+      {% for tag in all_tags %}
+        <span class="badge badge-pill badge-outline-primary tag-filter" data-tag="{{ tag | downcase }}">{{ tag }}</span>
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>

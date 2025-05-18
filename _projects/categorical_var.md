@@ -1,11 +1,11 @@
 ---
-layout: post
 title: "How to encode categorical variables and interpret them?"
 date: 2025-04-01
 excerpt: "We are interested in encoding categorical variables, because machine learning models work best with numerical data rather than text. Additionally, by encoding the categories into equal weights, we prevent introducing bias in the model."
-permalink: /blog/categorical-variables-encoding/
-tags: [blog, statistics, fundamentals]
+permalink: /projects/categorical-variables-encoding/
+tags: [statistics, fundamentals]
 pinned: true
+type: blog
 ---
 
 # How do you encode categorical variables?
