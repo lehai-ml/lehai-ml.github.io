@@ -10,8 +10,8 @@
     <div class="pinned-list">
       <span 
         class="badge badge-pill badge-outline-primary pinned-filter" data-filter-type="pinned">📌</span>
-
-      {% assign post_types = site.projects | map: "type" | compact | flatten | uniq | sort %}
+      {% assign visible_projects = site.projects | where_exp: "item", "item.show != false" %}
+      {% assign post_types = visible_projects | map: "type" | compact | flatten | uniq | sort %}
       {% for post_type in post_types %}
         <span class="badge badge-pill badge-outline-primary type-filter" data-type="{{ post_type | downcase }}">{{ post_type }}</span>
       {% endfor %}
@@ -28,7 +28,7 @@
 
     <div class="collapse" id="tagsCollapse" show>
       <div class="tags-list">
-      {% assign all_tags = site.projects | map: "tags" | compact | flatten | uniq | sort %}
+      {% assign all_tags = visible_projects | map: "tags" | compact | flatten | uniq | sort %}
       {% for tag in all_tags %}
         <span class="badge badge-pill badge-outline-primary tag-filter" data-tag="{{ tag | downcase }}">{{ tag }}</span>
       {% endfor %}

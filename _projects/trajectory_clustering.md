@@ -3,8 +3,9 @@ layout: post
 title: "Latent Class Growth Analysis and Growth Mixture Modelling"
 date: 2025-03-19
 excerpt: ""
+image: /assets/images/trajectory_clustering/two_clusters_trajectory.jpg
 permalink: /projects/latent-class-growth-analysis-and-growth-mixture-modelling/
-tags: [statistics, r, clustering]
+tags: [statistics, r, clustering, tutorial]
 type: blog
 ---
 

@@ -1,6 +1,6 @@
 ---
 title: Fun applications of Deep Learning
-tags: [Python, fastai, deep learning, tensorflow]
+tags: [python, tensorflow, deep learning, tutorial]
 description: Series of workshops showcasing silly application of AI
 image: https://github.com/lehai-ml/KCLAI_soc/blob/main/images/Image_style_transfer.png?raw=true
 date: 2020-02-01
