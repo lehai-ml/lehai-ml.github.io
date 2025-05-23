@@ -6,6 +6,11 @@ baseurl             : "" # Change to empty quotes if you are hosting your site a
 ### Plugins ###
 plugins:
   - jemoji
+  - jekyll-toc
+
+markdown: kramdown
+kramdown:
+  auto_ids: true
 
 ### Navbar Settings ###
 nav_exclude:                                            # The following paths are excluded from navbar

@@ -28,6 +28,46 @@ layout: default
 
 </p>
 
+<div class="dropdown mb-4">
+  <button class="btn btn-secondary dropdown-toggle" type="button" data-bs-toggle="dropdown" aria-expanded="false">
+    Table of Contents
+  </button>
+  <ul class="dropdown-menu px-3" style="max-height: 300px; overflow-y: auto;">
+    {% assign headings = content | split: "<h" %}
+    {% for heading in headings %}
+      {% if heading contains '</h1>' or heading contains '</h2>' or heading contains '</h3>' %}
+        {% assign level = heading | slice: 0, 1 %}
+        {% assign parts = heading | split: ">" %}
+        {% assign tag_content = parts[1] | split: "<" | first %}
+        {% assign anchor = tag_content | slugify %}
+        {% case level %}
+          {% when "1" %}
+            {% assign h1_count = h1_count | plus: 1 %}
+            {% assign h2_count = 0 %}
+            {% assign h3_count = 0 %}
+            {% assign number = h1_count %}
+            {% assign indent = 0 %}
+          {% when "2" %}
+            {% assign h2_count = h2_count | plus: 1 %}
+            {% assign h3_count = 0 %}
+            {% assign number = h1_count | append: "." | append: h2_count %}
+            {% assign indent = 15 %}
+          {% when "3" %}
+            {% assign h3_count = h3_count | plus: 1 %}
+            {% assign number = h1_count | append: "." | append: h2_count | append: "." | append: h3_count %}
+            {% assign indent = 30 %}
+        {% endcase %}
+      <li class="dropdown-item" style="padding-left: {{ indent }}px;">
+          <a href="#{{ anchor }}" class="text-decoration-none">
+          {{ number }}. {{ tag_content }}
+          </a>
+        </li>
+      {% endif %}
+    {% endfor %}
+  </ul>
+</div>
+
+
 <div class="markdown-body">
   {{ content }}
 </div>
