@@ -9,8 +9,10 @@ plugins:
   - jekyll-toc
 
 markdown: kramdown
+highlighter: rouge
 kramdown:
   auto_ids: true
+
 
 ### Navbar Settings ###
 nav_exclude:                                            # The following paths are excluded from navbar

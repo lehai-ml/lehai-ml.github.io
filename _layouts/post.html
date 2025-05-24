@@ -72,8 +72,37 @@ layout: default
   {{ content }}
 </div>
 
-{% if page.comments %}
-<div class="pt-5">
-  {% include page/disqus.html %}
+{% assign visible_posts = site.projects | where_exp: "item", "item.show != false" %}
+{% assign visible_posts = visible_posts | where_exp: "item", "item.external_url == nil" %}
+
+{% assign current_index = -1 %}
+
+{% for p in visible_posts %}
+  {% if p.url == page.url %}
+    {% assign current_index = forloop.index0 %}
+    {% assign next_index = current_index | plus: 1 %}
+    {% assign previous_index = current_index | minus: 1 %}
+    {% assign current_post = visible_posts[current_index] %}
+    {% assign next_post = visible_posts[next_index] %}
+    {% assign previous_post = visible_posts[previous_index] %}
+
+    {% endif %}
+{% endfor %}
+
+
+<div class="d-flex justify-content-between mt-5">
+  {% if previous_post %}
+
+    <a class="btn btn-outline-secondary small" href="{{ previous_post.url | relative_url }}">
+      ← Previous: {{ previous_post.title }}
+    </a>
+  {% else %}
+    <span></span>
+  {% endif %}
+
+  {% if next_post %}
+    <a class="btn btn-primary small" href="{{ next_post.url | relative_url }}">
+      Next: {{ next_post.title }} →
+    </a>
+  {% endif %}
 </div>
-{% endif %}

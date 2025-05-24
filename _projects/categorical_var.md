@@ -19,7 +19,7 @@ There are two types of categorical data:
 
 We are interested in encoding categorical variables, because machine learning models work best with numerical data rather than text. Additionally, by encoding the categories into equal weights, we prevent introducing bias in the model.
 
-## Dummy encoding
+# Dummy encoding
 To demonstrate each encoding strategies, suppose you have the following dataset
 
 ID| Age | Weight | Smoker | Place of Birth| Heart risk
@@ -76,22 +76,22 @@ The associated summary statistics may be as follows:
 Similar to above, the interpretation of the coefficients will be relative to the reference,
 >Person born in Japan on average will have $e^{2.3}=9.97$ higher odds of having heart problems compared with a person born in the UK.
 
-## One Hot Encoding
+# One Hot Encoding
 
 In the table above, we have ommitted a column `PoB = UK`. This is because of the multicolinearity problem [[2]](#2). If we were using linear regression, there would be more than 1 unique solutions. However, this is not the problem when using neural networks, decision trees or any model that does not have the assumption of non-multicolinearity.
 
-## Ordinal Encoding
+# Ordinal Encoding
 
 If your categorical column has some inherent order, you may consider using ordinal encoding. This is fairly straightforward in that your data is converted to numerical values that preserve the ranking of the data points.
 
 The interpretation of the coefficients is similar to other continuous variables, such that a change in one unit causes a change in the dependent variable equal to the coefficient.
 
-## Label Encoding
+# Label Encoding
 
 The main disadvantage of One-Hot encoding is that it may introduce many extra columns. Label encoding is the type an interger encoding that convert each categorical value to a unique integer. The main flow of this encoding scheme is that it may inadvertently introduce ordinality in the dataset where there is no such relationship. According to the `sklearn` documentation,
 >the `LabelEncoder` must only be used to encode target values, i.e. `y`, and not the input `x`.[[3]](#3)
 
-## Frequency Encoding
+# Frequency Encoding
 
 Instead of arbitrarily assigning numbers to categorical values, one strategy is to convert the categorical values based on how many times they are observed in the dataset. For example,
 
@@ -111,7 +111,7 @@ We can interpret the coefficient $\beta_1$ as follows,
 - If $\beta_1 > 0$, cities with more occurences will contribute more to the revenue.
 - If $\beta_1 < 0$, cities with more occurences will contribute less to the revenue.
 
-## Target Encoding
+# Target Encoding
 
 Alternatively, we can assign the categorical values using the target values, such as the mean of revenue in each city. 
 
@@ -124,7 +124,7 @@ Chicago | 10 000 | 500
 We can use target encoding when there is likely relationship between category and the target variable. However, we should not use it to perform classification, as it can lead to data leakage.
 
 
-## Summary
+# Summary
 
 Below is the summary of several encoding methods [[4]](#4)
 
@@ -135,7 +135,7 @@ One hot encoding | - Suitable for nominal data <br> - Does not introduce ordinal
 Ordinal encoding | - Preserve the order of the categories| - The spacing between orders are equal, which may not always be the case
 Target encoding | - Can improve model performance by incorporating target information | - May introduce overfitting with small datasets.
 
-## References
+# References
 
 <a id="1"></a> [1] [https://www.statology.org/interpret-logistic-regression-coefficients/](https://www.statology.org/interpret-logistic-regression-coefficients/)
 
