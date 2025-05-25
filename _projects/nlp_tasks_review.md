@@ -5,6 +5,7 @@ image: /assets/images/nlp_tasks_review/llm_tree.png
 date: 2025-05-23
 pinned: true
 type: blog
+show: false
 ---
 >>The full guide of huggingface is found here [[1]](https://huggingface.co/learn/llm-course/chapter1/1?fw=pt). This is a review of the main concepts along with some codes.
 
@@ -122,5 +123,8 @@ Conversational AI | Decoder | GPT, Llama
 
 ## How does inference work?
 
-Inference is the way in which the 
+Again, [3Blue1Brown](https://www.youtube.com/watch?v=wjZofJX0v4M) explains it very well. Imagine each component in the neural network (weight) as a knob. During training, billions of these knobs are turned, and the combination of the positions of these knobs are what make the prediction.
+
+
+
 
