@@ -123,7 +123,50 @@ Conversational AI | Decoder | GPT, Llama
 
 ## How does inference work?
 
-Again, [3Blue1Brown](https://www.youtube.com/watch?v=wjZofJX0v4M) explains it very well. Imagine each component in the neural network (weight) as a knob. During training, billions of these knobs are turned, and the combination of the positions of these knobs are what make the prediction.
+Again, [3Blue1Brown](https://www.youtube.com/watch?v=wjZofJX0v4M) explains it very well. Imagine each component in the neural network (weight) as a knob.
+
+Inference is the process by which LLM generate the next word. 
+### Attention
+
+The attention mechanism is what gives LLMs their ability to understand context and generate coherent responses. Essentially, it allows words to have weights. For example, in the sentence “The capital of France is ….”, the words *capital* and *France* carry more weights than the rest.
+
+#### The basic of the attention architecture
+
+Consider these three sentences:
+* Tower of Hanoi
+* A collapsed tower
+
+While it is the same word *tower* in both sentences, they carry a different meaning. The role of the attention network is to codify the “context” to the word “tower”. Or more generally, the attention network updates each word based on the presence of the surrounding words. This allows the LLM to generate a coherent and human-like text.
+
+Let’s consider the following example, *The quick brown fox jumps over the lazy dog* (note, I will use the term token and word interchangeably). Before the training, each of these words is converted to an embedding vector, *the* -> *E_1*, *quick* -> *E_2*, *brown* -> *E_3*, *fox* -> *E_4*. The goal of the attention network is to update these vectors into *E_1’*, *E_2’*,…*E_n’*, such that they contain information encoded from the surrounding tokens. So more concretely, we want to the update the word *fox*, with the fact that it is *quick* and *brown*. In other words, a ***quick brown** fox*, would exist in a different position in the embedding space from *fox*. 
+
+### Relevancy of the word
+To update *meaning* of a token, we need to know which other tokens are relevant to it. In this example, *quick* is relevant to *fox*, but not *lazy*. One can ask the following question for each word, “Is there an adjective before this noun?”. If there is, then we want that adjective (*quick*) to influence *more* the meaning of that noun (*fox*) than words that are not relevant (e.g, *the*). In the attention network, this interrogation of relevancy between pairs of tokens is achieved via two sets of matrices, **Query** (*W_Q*) and **Key** (*W_K*). 
+
+Essentially, each one of the embedding vectors (*E_n*) is multiplied by a *W_Q* (query matrix) and *W_K* (key matrix) to generate a corresponding query vector (*Q_n*) and key vector (*K_n*). In the example above, each Q_n can be thought of as the corresponding token *asking* whether there is relevancy between it and the surrounding tokens. Conversely, each K_n can be thought of as the answer to that. Each *Q_n* and *K_n* exists in a Query/Key high dimensional space, and the ones that are highly similar (high dot-product) to each other would indicate high relevancy.  In the example above, if *Q_4* indicates the query posed by the token *fox*, *K_2* - the key answered by the token *quick*, and *K_1* - the key answered by the token *the*, then the dot-product between *Q_4* and *K_2* will be higher than that between *Q_4* and *K_1*.  Obviously, there is no way you can decode what does *Q_n* or *K_n* means, but the idea is that at the end of the matrix multiplication, you are left with a dot-product table, such that the words relevant to each other would have a high dot-product (similarity value) between the Query and Key value. This dot-product table is also known as an attention pattern. Softmax function is generally applied to the columns of the dot-product table to indicate the weight (contribution) of each token on that particular token. To summarise, at the end of this step, we have for each token in the text the contribution and influence of other words on that token.
+
+So how to actually update the *meaning* of the tokens (i.e. how to update the meaning of the word *fox* to reflect the *quick brown fox*). The easy way is to use a third value matrix (W_V). In the simplest terms, if you take the embedding value, E_2, of the word *quick* and multiply it with the W_V you get a value vector (V_2), with which if you add to the embedding vector, E_4 of the word *fox*, you get the embedding value of *quick fox*. If you do the same to the embedding value, E_3, of the word *brown* and add the value matrix V_3 to the embedding value of *quick fox*, you get the embedding value of *quick brown fox*. The trick here is you multiply the V_n vector with the corresponding dot-product in the dot-product table. In this way, the value vectors of tokens relevant to the token of *fox*, would contribute *more* than the one that does not. Adding the original embedding values of each token to the weighted sums of these value vectors gives us the new updated embedding values.
+
+This concludes a single attention layer.
+
+### The dimensions of the matrices
+
+These three matrices are tuneable parameters in the transformer. The W_Q and W_K are n x m matrices, where m is the number of tokens in the embedding, and n is the number of query and key values. The value matrix is often represented as a linear product of two matrices, which are of similar sizes to that of the query and key matrices.
+
+In multi-headed attention map, this architecture is repeated across multiple layers, with each layer having its own tuneable W_Q, W_K and W_V. This allows the LLM to learn and impart different ways the context can change the meaning of the token.
+
+# How do LLMs store facts?
+
+In between the attention layers are multilayer perceptrons. These make up 2 third of the number of parameters in LLMs.
+
+In simple terms, each one of the embedding vectors generated from the last step is then passed to a series of matrix multiplication operation (in parallel). So if the sentenec is “Michael Jordan is the GOAT”, the embedding representation of “Michael”, and “Jordan” is passed through several layers.
+
+The first layer will put the original embedding vector to a higher dimension, the second layer introduces non-linearity to the vector and the third layer will put the vector to the original dimension.
+
+The first and the third layer can be thought of as a series of questions. In the first row of the first layer, the question may be “does the name correspond to Michael Jordan” -> if yes, then the dot product is 1. And then if first column of the third layer is related to basketball, then the information of basketball will be added as the first neuron in the preceding layer is 1 (i.e., activated). This allows for information/ facts to be stored in LLMs.
+
+
+
 
 
 
