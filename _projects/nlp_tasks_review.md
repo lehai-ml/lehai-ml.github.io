@@ -1,11 +1,11 @@
 ---
-title: Review of NLP tasks using Hugging Face
+title: Transformers architecture and LLM
 tags: [python, tutorial, llm]
 image: /assets/images/nlp_tasks_review/llm_tree.png
 date: 2025-05-23
 pinned: true
 type: blog
-show: false
+show: true
 ---
 >>The full guide of huggingface is found here [[1]](https://huggingface.co/learn/llm-course/chapter1/1?fw=pt). This is a review of the main concepts along with some codes.
 
